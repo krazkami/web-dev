@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <title> Haunted House </title>
+    <link rel='icon' href='game/assets/hauntedhouse-logo.png' />
+    <link href='game/styles/hauntedhouse.css' rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Basement</h1>
+    <hr>
+    <img id='ghost' src='game/assets/ghosts-paranormal.gif' width='480'>
+    <p id='battleText'>you have been trapped!</p>
+    <h4> What do you want to do? </h4>
+    <button id='fight' onclick='attack()'> Fight </button>
+    <button onclick='retreat()'>Retreat</button>
+    <hr>
+    <iframe src='inventory.html' id='inventory' height='100' width='150'></iframe>
+    <audio>
+        <source src="game/assets/ghost.mp3" type="audio/mpeg">
+    </audio>
+</body>
+<script>
+    // Load stats from localStorage or set defaults
+    var gp = +localStorage.gp || 0;
+    var hp = +localStorage.hp || 100;
+    var weapon = +localStorage.weapon || 1;
+    var rp = +localStorage.rp || 1;
+    var ghostHP = 3;
+
+    var inventory = document.getElementById('inventory');
+    var battleText = document.getElementById('battleText');
+    var ghost = document.getElementById('ghost');
+
+    function attack() {
+        if (weapon <= 0) {
+            battleText.innerHTML = "You don't have a weapon to attack!";
+            return;
+        }
+
+        // Deal damage
+        ghostHP -= 1;    // damage goblin
+        hp -= 50;        // player loses 50 HP
+        weapon -= 1;     // use one weapon
+
+        // Update localStorage
+        localStorage.hp = hp;
+        localStorage.weapon = weapon;
+
+        // Refresh inventory
+        inventory.src = inventory.src;
+
+        if (ghostHP <= 0) {
+            // Goblin defeated → go to win page
+            window.location.href = 'win.html';
+        } else {
+            battleText.innerHTML = `You hit the goblin for 1 damage. Goblin HP: ${ghostHP}<br>You take 50 damage.`;
+        }
+
+        if (hp <= 0) {
+            battleText.innerHTML = 'You Died.';
+        }
+    }
+
+    function retreat() {
+        if (rp > 0) {
+            rp--;
+            localStorage.rp = rp;
+            inventory.src = inventory.src;
+            window.location.href = 'Basement.html';
+        } else {
+            battleText.innerHTML = "You don't have enough RP to retreat!";
+        }
+    }
+</script>
+
+</html>

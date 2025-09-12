@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title> Haunted House game </title>
+    <link rel="icon" href="game/assets/hauntedhouse-logo.png" />
+    <link href='game/styles/hauntedhouse.css' rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Haunted House</h1>
+    <hr>
+    <p>Mystery is what the haunted seek, and the haunted house delivers!</p>
+    <img src='game/assets/chatgpt.png' width="900">
+    <h4>
+        <a href=# onclick="livingroom()">check the living room</a>
+    </h4>
+    <h4>
+        <a href='Basement.html'>Check the basement</a>
+    </h4>
+    <h4>
+        <a href='kitchen.html'> Check the kitchen</a>
+    </h4>
+    <iframe src='inventory.html' id=inventory height=100 width=200></iframe>
+</body>
+<script>
+    function livingroom() {
+        localStorage.keys = + 1;
+        localStorage.gp = + 25;
+        document.body.innerHTML = (
+            `<h1>Living room</h1>
+            <img src='game/assets/coins and key.png' width="480">
+            <p><i>Congratulation, you have found 25 coins and a key.</p>
+            <a href='Hauntedhouse.html'>Go back</a><br>
+            <audio autoplay>
+            </audio>
+            <iframe src='inventory.html?&key1' id=inventory height=100 width=200></iframe>`
+        );
+    }
+</script>
+<html>

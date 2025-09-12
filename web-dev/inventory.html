@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title> hauntedhouse </title>
+        <link rel ='icon' href='game/assets/hauntedhouse-logo.png'/>
+        <link href='game/styles/intro.css' rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+</head>
+
+<body>
+    <hr>
+    inventory:
+    <hr>
+    <table>
+        <tr>
+            <th> &#128176; </th>
+            <th> &#128156; </th>
+            <th> &#128326; </th>
+            <th> &#128273; </th>
+            <th> &#128481; </th>
+        </tr>
+        <tr>
+            <td id='gp'>0</td>
+            <td id='hp'>0</td>
+            <td id='rp'>0</td>
+            <td id='keys'>0</td>
+            <td id='weapon'>0</td>
+        </tr>
+    </table>
+    <script>
+     // 1. Load inventory from localStorage (or default to 0)
+        var inventory = {
+            gp: parseInt(localStorage.getItem('gp')) || 0,
+            hp: parseInt(localStorage.getItem('hp')) || 0,
+            ap: parseInt(localStorage.getItem('rp')) || 0,
+            keys: parseInt(localStorage.getItem('keys')) || 0,
+            weapon: parseInt(localStorage.getItem('weapon')) || 0,
+        };
+        // 2. If query string has values, ADD them and SAVE back
+        var params = new URLSearchParams(location.search);
+        ['gp', 'hp', 'rp', 'keys',"weapon"].forEach(key => {
+            if (params.has(key)) {
+                inventory[key] += parseInt(params.get(key)) || 0;
+                localStorage.setItem(key, inventory[key]);  // save
+            }
+        });
+        // 3. Always display the latest values
+        document.getElementById('gp').innerText = inventory.gp;
+        document.getElementById('hp').innerText = inventory.hp;
+        document.getElementById('rp').innerText = inventory.ap;
+        document.getElementById('keys').innerText = inventory.keys;
+        document.getElementById('weapon').innerText = inventory.weapon;
+     </script>
+</body>
+<html>

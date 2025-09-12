@@ -1,0 +1,37 @@
+<html>
+<title> hauntedhouse </title>
+<link rel="icon" href="game/assets/hauntedhouse-logo.png" />
+
+<head>
+
+</head>
+
+<body>
+    <h1> kitchen</h1>
+    <img src='game/assets/white light transport GIF by Pugatory.gif' width="280">
+    <p><i>you have been teleported.what do you want tells you not to waste the save for letter.</p>
+    <img src='game/assets/img.jpg' width="300">
+    <div>
+        <button onclick='food()'> Heal &#128156; <br> <i> heal 50 hp </i> </button>
+        <button onclick='weapon()'> weapon &#128481; <br> <i> gain a weapon </i> </button>
+    </div>
+    <a href='Hauntedhouse.html'> leave</a><br>
+    <iframe src='inventory.html' id=inventory height=100 width=200></iframe>
+</body>
+<script>
+    function food() {
+    if ((localStorage.gp||0) > 0 &&(localStorage.hp) < 200) {
+        localStorage.gp =(+localStorage.gp||0) -5;
+        localStorage.hp = (+localStorage.hp||0)+50;
+        document.getElementById("inventory").src = document.getElementById("inventory").src;
+    }
+}
+    function weapon() {
+    if (((localStorage.weapon||0)) < 3 && ((+localStorage.gp ||0)) >= 5 ) {
+        localStorage.gp = +localStorage.gp -5;
+        localStorage.weapon = Number(localStorage.weapon||0) +1;
+        document.getElementById("inventory").src = document.getElementById("inventory").src;
+    }
+}
+</script>
+<html>

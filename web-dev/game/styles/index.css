@@ -1,0 +1,28 @@
+/* Center the link container */
+.centerstart {
+    text-align: center; /* centers all content inside this div */
+    margin: 20px 0;
+}
+
+/* Style the link */
+.centerstart a {
+    color: red;          /* red text */
+    font-weight: bold;   /* bold */
+    font-size: 22px;     /* large text */
+    text-decoration: none; /* remove underline */
+}
+
+/* Hover effect */
+button:hover {
+    background-color: red;
+}
+body {
+    background-color: black; /* makes the whole page black */
+    color: rgb(160, 69, 69);            /* text is color */
+    text-align: center;
+}
+img {
+    border-radius: 8px;
+}
+
+

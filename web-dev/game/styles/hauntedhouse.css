@@ -1,0 +1,10 @@
+.border {
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(59, 59, 86);
+}
+body {
+    background-color: black;
+    color: rgb(212, 158, 158);
+    text-align: center;
+}

@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title> hauntedhouse </title>
+    <link rel='icon' href='game/assets/hauntedhouse-logo.png' />
+    <link href='game/styles/intro.css' rel="stylesheet">
+</head>
+
+<body>
+    <h1>Story Introduction</h1>
+    <hr>
+    <img src='game/assets/carbreakdown.png' width='900'>
+    <p><i>Greetings, traveler. The night is creeping in, and your car is broken. You must find shelter before it’s too
+            late.</p>
+    <h4>
+        <a href='Forest.html'>Go without checking the trunk</a>
+    </h4>
+    <h4>
+        <a href=# onclick='die()'>stay in the car and wait.</a>
+    </h4>
+    <h4>
+        <a href='trunk.html?ap=1'>Search the car trunk.</a>
+    </h4>
+    <hr>
+</body>
+<script>
+    localStorage.setItem('hp', 100);
+    function die() {
+        document.body.innerHTML = (
+            `<h1>You Die</h1>
+                <img src='game/assets/bear.gif' width='800'/>
+                <p>A giant Bear breaks in your car and eats you.</p>
+                <a href='index.html'><h4> Game Over </h4></a>
+                <audio autoplay>
+                    <source src="game/assets/bearnoise.mp3">
+                </audio>`
+        );
+    }
+</script>
+<html>
